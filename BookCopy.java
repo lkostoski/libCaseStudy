@@ -1,11 +1,14 @@
-public class BookCopy extends Book{
+public class BookCopy implements Borrowable{
     private int id;
     private boolean available;
+    private Book book;
 
-    BookCopy(int id, String title, String author, boolean available){
-        super(id, title, author);
-        this.available = available;
-    }
+    //no available because if you put it in library its automatically available  
+	BookCopy(int id, Book book){
+        this.id = id;
+        this.book = book;
+        available=true;
+	}
 	public int getId() {
 		return this.id;
 	}
@@ -18,8 +21,23 @@ public class BookCopy extends Book{
 		return this.available;
 	}
 
-	public void setAvailable(boolean available) {
-		this.available = available;
+	public void borrowItem(){
+		available = false;
 	}
 
+	public void returnItem(){
+		available = true;
+	}
+
+	public Book getBook() {
+		return this.book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+    public String toString(){
+        return book.toString() + ", available " + available + ", id " + id;
+    }
 }

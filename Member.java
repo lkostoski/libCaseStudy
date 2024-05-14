@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Member{
-    private int id;
-    private String name;
-    final private int MAX_ON_LOAN;
+	private int id;
+	private String name;
+	public static final int MAX_ON_LOAN = 6;
+	private List <Borrowable> onLoan;
 
 	public int getId() {
 		return this.id;
@@ -23,10 +27,19 @@ public class Member{
 		return MAX_ON_LOAN;
 	}
 
+	public Member(int id, String name){
+		this.id = id; 
+		this.name = name;
+		onLoan = new ArrayList<Borrowable>();
+	}
 
-    Member(int id, String name){
-        this.id = id;
-        this.name = name;
-        MAX_ON_LOAN=6; //all caps means its constant
-    }
+	public void borrows(Borrowable b){
+		 onLoan.add(b);
+		 b.borrowItem();
+	}
+
+	public void returns(Borrowable b){
+		onLoan.remove(b);
+		b.returnItem();
+	}
 }
