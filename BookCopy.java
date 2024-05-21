@@ -21,7 +21,8 @@ public class BookCopy implements Borrowable{
 		return this.available;
 	}
 
-	public void borrowItem(){
+	public void borrowItem() throws AvailabilityException{
+		if(available==false) throw new AvailabilityException("error");
 		available = false;
 	}
 

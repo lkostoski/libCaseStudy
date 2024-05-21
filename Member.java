@@ -33,9 +33,10 @@ public class Member{
 		onLoan = new ArrayList<Borrowable>();
 	}
 
-	public void borrows(Borrowable b){
-		 onLoan.add(b);
-		 b.borrowItem();
+	public void borrows(Borrowable b) throws LimitExceededException{
+		if(onLoan.size() == MAX_ON_LOAN) throw new LimitExceededException("The member cannot borrow more");
+		onLoan.add(b);
+		b.borrowItem();
 	}
 
 	public void returns(Borrowable b){

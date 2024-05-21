@@ -41,13 +41,14 @@ public class Library{
             System.out.println(borrowables);
     }
 //not wrong but masoc
-    public Book findBookById(int id){
+    public Title findBookById(int id){
         for(int i=0; i<titles.size(); i++){
             Title t = titles.get(i);
-            if(t != null && t instanceof Book && t.getId() == id){
+            if(t != null && t instanceof Title && t.getId() == id){
                 return t;
             }
         }
+        return null;
     }
 //better
     public Member findMemberById(int id){
